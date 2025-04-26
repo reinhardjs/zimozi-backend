@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zimozi-app-ingress
+  namespace: zimozi
+  annotations:
+    traefik.ingress.kubernetes.io/ssl-cert: "reinhardjs-my-id-tls-secret"
+    traefik.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+  - host: api-zimozi.reinhardjs.my.id
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: zimozi-app
+            port:
+              number: 3000
+  tls:
+  - hosts:
+    - api-zimozi.reinhardjs.my.id
+    secretName: reinhardjs-my-id-tls-secret

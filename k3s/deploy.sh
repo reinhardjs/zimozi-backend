@@ -11,5 +11,6 @@ kubectl apply -f "$DIR/redis-deployment.yaml"
 kubectl apply -f "$DIR/redis-service.yaml"
 kubectl apply -f "$DIR/app-deployment.yaml"
 kubectl apply -f "$DIR/app-service.yaml"
+kubectl apply -f "$DIR/app-ingress.yaml"
 
 echo "✅ All resources created in the 'zimozi' namespace."
