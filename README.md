@@ -1,5 +1,7 @@
 # Task Management API
 
+![image](https://github.com/user-attachments/assets/63252eed-8808-4a23-a79a-85d72251c86f)
+
 A RESTful API for task management built with Node.js, Express, TypeScript, MongoDB, JWT authentication, and Redis caching.
 
 ## Features
