@@ -1,21 +1,17 @@
-FROM node:18-alpine
+FROM node:22.13.1 as builder
 
 WORKDIR /app
-
-# Copy package.json and package-lock.json
 COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
+RUN npm ci --build-from-source  # Force native module rebuild
 COPY . .
-
-# Build the TypeScript code
 RUN npm run build
 
-# Expose the port the app runs on
-EXPOSE 3000
-
-# Command to run the application
-CMD ["npm", "start"]
+# Production stage
+FROM node:22.13.1-alpine
+WORKDIR /app
+RUN apk add --no-cache python3 make g++
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/.env ./
+CMD ["node", "dist/index.js"]
