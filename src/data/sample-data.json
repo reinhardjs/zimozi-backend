@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "password": "password123",
+      "role": "admin"
+    },
+    {
+      "name": "Regular User",
+      "email": "user@example.com",
+      "password": "password123",
+      "role": "user"
+    },
+    {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "password123",
+      "role": "user"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Complete Project Setup",
+      "description": "Set up the initial project structure and dependencies",
+      "status": "completed",
+      "dueDate": "2025-04-25T00:00:00.000Z",
+      "assignedTo": "USER_ID_PLACEHOLDER_1"
+    },
+    {
+      "title": "Implement Authentication",
+      "description": "Create user registration, login, and JWT authentication",
+      "status": "in_progress",
+      "dueDate": "2025-04-27T00:00:00.000Z",
+      "assignedTo": "USER_ID_PLACEHOLDER_1"
+    },
+    {
+      "title": "Create Task API",
+      "description": "Implement CRUD operations for tasks",
+      "status": "todo",
+      "dueDate": "2025-04-28T00:00:00.000Z",
+      "assignedTo": "USER_ID_PLACEHOLDER_2"
+    },
+    {
+      "title": "Add Redis Caching",
+      "description": "Implement Redis caching for task endpoints",
+      "status": "todo",
+      "dueDate": "2025-04-29T00:00:00.000Z",
+      "assignedTo": "USER_ID_PLACEHOLDER_2"
+    },
+    {
+      "title": "Write Unit Tests",
+      "description": "Create unit tests for all API endpoints",
+      "status": "todo",
+      "dueDate": "2025-04-30T00:00:00.000Z",
+      "assignedTo": "USER_ID_PLACEHOLDER_3"
+    }
+  ]
+}
