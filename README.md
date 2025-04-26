@@ -113,6 +113,88 @@ chmod +x k3s/deploy.sh
 ./k3s/deploy.sh
 ```
 
+## Deployment on k3s Kubernetes
+
+The API is deployed on my VPS k3s Kubernetes cluster and can be accessed via:
+
+https://api-zimozi.reinhardjs.my.id
+
+### Base URL
+
+All endpoints are available under:
+
+```
+https://api-zimozi.reinhardjs.my.id/api
+```
+
+## Curl Examples
+
+### Authentication
+
+#### Register
+
+```bash
+curl -X POST https://api-zimozi.reinhardjs.my.id/api/users/register \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John Doe","email":"john@example.com","password":"password"}'
+```
+
+#### Login
+
+```bash
+curl -X POST https://api-zimozi.reinhardjs.my.id/api/users/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"john@example.com","password":"password"}'
+```
+
+#### Get Profile (Protected)
+
+```bash
+curl -X GET https://api-zimozi.reinhardjs.my.id/api/users/profile \
+  -H "Authorization: Bearer <JWT_TOKEN>"
+```
+
+### Tasks
+
+#### Create Task
+
+```bash
+curl -X POST https://api-zimozi.reinhardjs.my.id/api/tasks \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <JWT_TOKEN>" \
+  -d '{"title":"New Task","description":"Task description"}'
+```
+
+#### Get Task by ID
+
+```bash
+curl -X GET https://api-zimozi.reinhardjs.my.id/api/tasks/<TASK_ID> \
+  -H "Authorization: Bearer <JWT_TOKEN>"
+```
+
+#### Get All Tasks
+
+```bash
+curl -X GET https://api-zimozi.reinhardjs.my.id/api/tasks \
+  -H "Authorization: Bearer <JWT_TOKEN>"
+```
+
+#### Update Task
+
+```bash
+curl -X PUT https://api-zimozi.reinhardjs.my.id/api/tasks/<TASK_ID> \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <JWT_TOKEN>" \
+  -d '{"title":"Updated Title","description":"Updated description"}'
+```
+
+#### Delete Task (Admin Only)
+
+```bash
+curl -X DELETE https://api-zimozi.reinhardjs.my.id/api/tasks/<TASK_ID> \
+  -H "Authorization: Bearer <JWT_TOKEN>"
+```
+
 ## Project Structure
 
 ```
