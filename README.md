@@ -104,6 +104,15 @@ docker build -t task-management-api .
 
 The application can be deployed to cloud providers like Render, Railway, or fly.io using the provided Dockerfile.
 
+## Kubernetes Deployment
+
+Make sure your `kubectl` context is set to your k3s cluster, then execute:
+
+```bash
+chmod +x k3s/deploy.sh
+./k3s/deploy.sh
+```
+
 ## Project Structure
 
 ```

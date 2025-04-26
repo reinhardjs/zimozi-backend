@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zimozi-app
+  namespace: zimozi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zimozi-app
+  template:
+    metadata:
+      labels:
+        app: zimozi-app
+    spec:
+      containers:
+      - name: app
+        image: zimozi-app:latest       # ← build & tag this locally
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        env:
+          - name: PORT
+            value: "3000"
+          - name: MONGODB_URI
+            value: "mongodb://mongodb:27017/task-management"
+          - name: REDIS_URL
+            value: "redis://redis:6379"
+          - name: JWT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: jwt-secret
+                key: JWT_SECRET
