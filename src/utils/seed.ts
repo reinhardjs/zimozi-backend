@@ -1,10 +1,11 @@
-import mongoose from 'mongoose';
+import mongoose, { HydratedDocument } from 'mongoose';
 import fs from 'fs';
 import path from 'path';
 import { connectDB, closeDB } from './database';
 import User from '../models/User';
 import Task from '../models/Task';
 import config from '../config/config';
+import { IUser } from '../models/User';
 
 // Function to seed the database with sample data
 const seedDatabase = async (): Promise<void> => {
@@ -29,7 +30,7 @@ const seedDatabase = async (): Promise<void> => {
     console.log('Creating users...');
     
     // Create users
-    const users = await User.create(sampleData.users);
+    const users: HydratedDocument<IUser>[] = await User.create(sampleData.users as IUser[]);
     
     console.log('Creating tasks...');
     
