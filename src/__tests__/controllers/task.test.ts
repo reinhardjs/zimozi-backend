@@ -84,7 +84,7 @@ describe('Task Controller', () => {
       await getTaskById(mockRequest as Request, mockResponse as Response);
 
       expect(redisUtils.getCache).toHaveBeenCalledWith(`task:${taskId}`);
-      expect(Task.findById).toHaveBeenCalledWith(taskId);
+      expect(Task.findById).toHaveBeenCalledWith(taskId.toString());
       expect(redisUtils.setCache).toHaveBeenCalledWith(`task:${taskId}`, task, 60);
       expect(mockResponse.json).toHaveBeenCalledWith(task);
     });
