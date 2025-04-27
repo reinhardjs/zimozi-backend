@@ -49,7 +49,7 @@ const userSchema = new Schema(
 );
 
 // Hash password before saving
-userSchema.pre<IUser>('save', async function (next) {
+userSchema.pre<IUser>('save', async function(this: IUser, next) {
   if (!this.isModified('password')) return next();
 
   try {
@@ -62,10 +62,16 @@ userSchema.pre<IUser>('save', async function (next) {
 });
 
 // Method to compare password
-userSchema.methods.comparePassword = async function (
+// Improved implementation with error handling
+userSchema.methods.comparePassword = async function(this: IUser, 
   candidatePassword: string
 ): Promise<boolean> {
-  return bcrypt.compare(candidatePassword, this.password);
+  try {
+    return await bcrypt.compare(candidatePassword, this.password);
+  } catch (error) {
+    console.error('Password comparison error:', error);
+    return false;
+  }
 };
 
 const User = mongoose.model<IUser>('User', userSchema);
