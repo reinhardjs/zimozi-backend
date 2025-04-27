@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: zimozi-app-ingress
-  namespace: zimozi
+  namespace: my
   annotations:
     traefik.ingress.kubernetes.io/ssl-cert: "reinhardjs-my-id-tls-secret"
     traefik.ingress.kubernetes.io/ssl-redirect: "true"

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: zimozi-app
-  namespace: zimozi
+  namespace: my
 spec:
   replicas: 1
   selector:

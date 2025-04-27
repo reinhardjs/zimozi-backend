@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: zimozi-app
-  namespace: zimozi
+  namespace: my
 spec:
   type: ClusterIP
   ports:

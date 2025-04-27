@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis
-  namespace: zimozi
+  namespace: my
 spec:
   replicas: 1
   selector:
@@ -13,6 +13,8 @@ spec:
       labels:
         app: redis
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: master-node
       containers:
       - name: redis
         image: redis:alpine

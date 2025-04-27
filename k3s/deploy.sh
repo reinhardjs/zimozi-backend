@@ -3,7 +3,6 @@ set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-kubectl apply -f "$DIR/namespace.yaml"
 kubectl apply -f "$DIR/secret.yaml"
 kubectl apply -f "$DIR/mongodb-deployment.yaml"
 kubectl apply -f "$DIR/mongodb-service.yaml"
