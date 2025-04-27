@@ -13,6 +13,8 @@ spec:
       labels:
         app: zimozi-app
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: master-node
       containers:
       - name: app
         image: zimozi-app:latest       # ← build & tag this locally
